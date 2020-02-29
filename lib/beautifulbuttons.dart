@@ -11,6 +11,7 @@ class _BeautifulButtonsState extends State<BeautifulButtons> {
   String _msgVolume = 'Volume Up';
   String dropdownValue = 'One';
   String _dropDownValue = 'One';
+  List<bool> _selections = List.generate(3, (_) => false);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -95,7 +96,34 @@ class _BeautifulButtonsState extends State<BeautifulButtons> {
                 ],
               ),
             ),
-            Text('Message duration is one second.'),
+            ToggleButtons(
+              children: [
+                Icon(Icons.local_cafe),
+                Icon(Icons.fastfood),
+                Icon(Icons.cake)
+              ],
+              isSelected: _selections,
+              onPressed: (int index){
+                setState(() {
+                  _selections[index] = !_selections[index];
+                });
+              },
+              color: Colors.green,
+              selectedColor: Colors.blue,
+              fillColor: Colors.red,
+              borderRadius: BorderRadius.circular(30),
+              borderWidth: 5,
+              borderColor: Colors.yellow,
+              selectedBorderColor: Colors.deepOrange,
+              splashColor: Colors.purple,
+              highlightColor: Colors.yellow,
+              disabledColor: Colors.grey[300],
+              disabledBorderColor: Colors.blueGrey,
+            ),
+            SizedBox(height: 100,),
+           Text('Message duration is one second.',
+            style: TextStyle(fontSize: 20,
+            fontWeight: FontWeight.bold),),
           ],
         ),
       ),
